@@ -159,7 +159,18 @@ module.exports = class Shell {
   }
 
   async builtin_scale(...args) {
-    this.sys.scale(args[1]);
+    args.shift();
+    if (args.length == 0){
+      this.sys.write("usage: scale <factor>");
+    }else{
+      factor = args.shift();
+      if (isNaN(Number(factor))){
+        this.sys.write("not a number");
+      }else{
+        this.sys.scale(args[1]);
+        this.sys.write("scale applied");
+      }
+    }
   }
 
 };
