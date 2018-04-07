@@ -163,11 +163,11 @@ module.exports = class Shell {
     if (args.length == 0){
       this.sys.write("usage: scale <factor>\n");
     }else{
-      factor = args.shift();
+      const factor = args.shift();
       if (isNaN(Number(factor))){
         this.sys.write("not a number\n");
       }else{
-        this.sys.scale(args[1]);
+        this.sys.scale(factor);
         this.sys.write("scale applied\n");
       }
     }
